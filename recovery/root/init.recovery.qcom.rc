@@ -24,6 +24,12 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+service load_ts_firmware /sbin/load_ts_firmware.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
 
 on boot
     setprop sys.usb.config mtp,adb
@@ -75,6 +81,9 @@ on property:sys.usb.config=fastboot && property:sys.usb.ffs.ready=1 && property:
     symlink /config/usb_gadget/g1/functions/ffs.fastboot /config/usb_gadget/g1/configs/b.1/f1
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
+
+on property:vendor.sys.listeners.registered=true
+   start load_ts_firmware
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}

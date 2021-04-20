@@ -33,6 +33,5 @@ $(call inherit-product, vendor/omni/config/gsm.mk)
 PRODUCT_DEVICE := cebu
 PRODUCT_NAME := omni_cebu
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := motorola
-PRODUCT_MANUFACTURER := motorola
-PRODUCT_RELEASE_NAME := motorola motorola
+PRODUCT_MODEL := Motorola G9 Power
+PRODUCT_MANUFACTURER := Motorola

@@ -25,6 +25,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+on boot
+    setprop sys.usb.config mtp,adb
+
 on init
     mkdir /config
     mount configfs none /config

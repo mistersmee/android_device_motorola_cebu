@@ -16,33 +16,26 @@
 # limitations under the License.
 #
 
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+# define hardware platform
+PRODUCT_PLATFORM := bengal
+
+# A/B support
+AB_OTA_UPDATER := true
+
 LOCAL_PATH := device/motorola/cebu
 
 # A/B
 AB_OTA_PARTITIONS += \
     boot \
     system \
-    vendor
-
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
-
-# Boot control HAL
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-service
-
-PRODUCT_PACKAGES += \
-    bootctrl.bengal
-
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    bootctrl.bengal \
-    libgptutils \
-    libz \
-    libcutils
+    vendor \
+    product \
+    recovery \
+    vbmeta \
+    dtbo
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -50,3 +43,49 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+PRODUCT_PACKAGES += \
+    bootctrl.bengal \
+    update_engine_sideload
+
+
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_system=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true
+
+# tell update_engine to not change dynamic partition table during updates
+# needed since our qti_dynamic_partitions does not include
+# vendor and odm and we also dont want to AB update them
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
+
+# Boot control HAL
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service \
+    android.hardware.boot@1.0-impl-wrapper.recovery \
+    android.hardware.boot@1.0-impl-wrapper \
+    android.hardware.boot@1.0-impl.recovery \
+    bootctrl.$(PRODUCT_PLATFORM) \
+    bootctrl.$(PRODUCT_PLATFORM).recovery
+
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
+# tzdata
+PRODUCT_PACKAGES += \
+    tzdata_twrp
+
+# Blacklist
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
+    ro.bootimage.build.date.utc \
+    ro.build.date.utc
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
+

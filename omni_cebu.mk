@@ -29,9 +29,12 @@ $(call inherit-product, device/motorola/cebu/device.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, vendor/omni/config/gsm.mk)
 
+# Release name
+PRODUCT_RELEASE_NAME := liber
+
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := cebu
 PRODUCT_NAME := omni_cebu
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := Motorola G9 Power
-PRODUCT_MANUFACTURER := Motorola
+PRODUCT_MODEL := motorola g(9) power
+PRODUCT_MANUFACTURER := motorola

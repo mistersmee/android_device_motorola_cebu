@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-PLATFORM_PATH := device/motorola/cebu
+DEVICE_PATH := device/motorola/cebu
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := bengal

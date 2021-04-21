@@ -31,6 +31,8 @@ service load_ts_firmware /sbin/load_ts_firmware.sh
     oneshot
     seclabel u:r:recovery:s0
 
+import /init.recovery.qcom_decrypt.rc
+
 on boot
     setprop sys.usb.config mtp,adb
 

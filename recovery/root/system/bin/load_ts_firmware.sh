@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-module_path=/sbin/modules
+module_path=/vendor/lib/modules
 
 touch_class_path=/sys/class/touchscreen
 touch_path=
@@ -44,27 +44,13 @@ insmod $module_path/qpnp_adaptive_charge.ko
 insmod $module_path/focaltech_0flash_mmi.ko
 insmod $module_path/nova_0flash_mmi.ko
 
-is_auo=$(cat /proc/cmdline | grep "ft8006_auo")
-
 cd $firmware_path
 touch_product_string=$(ls $touch_class_path)
-case $touch_product_string in
-    ft8006)
-        case $device in
-		cebu)
-                insmod $module_path/aw8695.ko
-                firmware_file="focaltech-dsbj-ft8006s_aa-05-0000-cebu.bin"
-                ;;
-    *)
-        firmware_file="novatek_ts_fw.bin"
-        echo 1 > /proc/nvt_update
-        ;;
-esac
+firmware_file="focaltech-dsbj-ft8006s_aa-05-0000-cebu.bin"
 
 touch_path=/sys$(cat $touch_class_path/$touch_product_string/path | awk '{print $1}')
 wait_for_poweron
 echo $firmware_file > $touch_path/doreflash
-echo /vendor/firmware/focaltech-dsbj-ft8006s_aa-05-0000-cebu.bin > $touch_path/doreflash
 echo 1 > $touch_path/forcereflash
 sleep 5
 echo 1 > $touch_path/reset

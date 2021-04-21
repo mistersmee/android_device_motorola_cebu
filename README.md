@@ -20,17 +20,30 @@ Front Camera | 16 MP, 1.0µm
 
 ### How to compile
 
-```
-export ALLOW_MISSING_DEPENDENCIES=true
+```sh
 . build/envsetup.sh
+export LC_ALL=C
 lunch omni_cebu-eng
-mka clean && mka recoveryimage
+mka -j4 recoveryimage
 ```
 
-### Test build
-
-```
-cd out/target/product/cebu
-fastboot boot recovery.img
-```
-NOTE: TWRP can also be installed!
+### Copyright
+ ```
+  /*
+  *  Copyright (C) 2013-21 The OmniROM Project
+  *
+  * This program is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation, either version 3 of the License, or
+  * (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  *
+  */
+  ```

@@ -24,7 +24,7 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-service load_ts_firmware /sbin/load_ts_firmware.sh
+service load_ts_firmware /system/bin/load_ts_firmware.sh
     user root
     group root
     disabled

@@ -84,9 +84,13 @@ on property:sys.usb.config=fastboot && property:sys.usb.ffs.ready=1 && property:
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
     setprop sys.usb.state ${sys.usb.config}
 
-on property:vendor.sys.listeners.registered=true
-   start load_ts_firmware
+on property:ro.crypto.type=file
+    setprop ro.crypto.state encrypted
+    setprop twrp.apex.loaded true
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    export LD_LIBRARY_PATH /sbin:/vendor/lib64:/vendor/lib64/hw
+    start load_ts_firmware
+

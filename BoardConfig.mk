@@ -166,8 +166,8 @@ BOARD_USES_METADATA_PARTITION := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Installer
-USE_RECOVERY_INSTALLER := true
-RECOVERY_INSTALLER_PATH := device/motorola/cebu/installer
+#USE_RECOVERY_INSTALLER := true
+#RECOVERY_INSTALLER_PATH := device/motorola/cebu/installer
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi

@@ -91,6 +91,6 @@ on property:ro.crypto.type=file
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    export LD_LIBRARY_PATH /sbin:/vendor/lib64:/vendor/lib64/hw
+    export LD_LIBRARY_PATH /system/bin:/sbin:/vendor/lib64:/vendor/lib64/hw
     start load_ts_firmware
 

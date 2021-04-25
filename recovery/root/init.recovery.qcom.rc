@@ -27,8 +27,8 @@
 service load_ts_firmware /system/bin/load_ts_firmware.sh
     user root
     group root
-    disabled
     oneshot
+    disabled
     seclabel u:r:recovery:s0
 
 import /init.recovery.qcom_decrypt.rc

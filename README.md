@@ -22,9 +22,7 @@ Front Camera | 16 MP, 1.0µm
 ### Kernel Source
 Check here:
 
-```sh
 https://github.com/mistersmee/kernel_motorola_cebu/
-```
 
 
 ### How to compile

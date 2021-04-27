@@ -18,6 +18,15 @@ Front Camera | 16 MP, 1.0µm
 
 ![Device Picture](https://fdn2.gsmarena.com/vv/bigpic/motorola-moto-g9-power.jpg)
 
+
+### Kernel Source
+Check here:
+
+```sh
+https://github.com/mistersmee/kernel_motorola_cebu/
+```
+
+
 ### How to compile
 
 ```sh

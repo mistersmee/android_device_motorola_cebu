@@ -33,7 +33,7 @@ export LC_ALL=C
 lunch omni_cebu-eng
 mka -jX recoveryimage
 ```
-Note: Where 'X' is the number of cores your processor has.
+Note: 'X' in `mka -jX recoveryimage` is the number of cores your processor has, as an example, a qaud-core processor would have `mka -j4 recoveryimage`, as the command.
 
 ### Copyright
  ```

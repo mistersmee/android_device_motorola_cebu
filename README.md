@@ -31,10 +31,10 @@ https://github.com/mistersmee/kernel_motorola_cebu/
 . build/envsetup.sh
 export LC_ALL=C
 lunch omni_cebu-eng
-mka -jX recoveryimage
+mka -jX clobber && mka -jX recoveryimage
 ```
 Note: 'X' in `mka -jX recoveryimage` is the number of cores your processor has.
-For example, a qaud-core processor would have `mka -j4 recoveryimage`, as the command.
+For example, a qaud-core processor would have `mka -j4 recoveryimage` as the command.
 
 ### Copyright
  ```

@@ -31,8 +31,9 @@ https://github.com/mistersmee/kernel_motorola_cebu/
 . build/envsetup.sh
 export LC_ALL=C
 lunch omni_cebu-eng
-mka -j4 recoveryimage
+mka -jX recoveryimage
 ```
+Note: Where 'X' is the number of cores your processor has.
 
 ### Copyright
  ```

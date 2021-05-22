@@ -180,8 +180,8 @@ BOARD_USES_METADATA_PARTITION := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Installer
-USE_RECOVERY_INSTALLER := true
-RECOVERY_INSTALLER_PATH := device/motorola/cebu/installer
+#USE_RECOVERY_INSTALLER := true
+#RECOVERY_INSTALLER_PATH := device/motorola/cebu/installer
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
@@ -195,8 +195,8 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_FB2PNG := true
-TW_MAX_BRIGHTNESS := 4095
-TW_DEFAULT_BRIGHTNESS := 3200
+TW_MAX_BRIGHTNESS := 2047
+TW_DEFAULT_BRIGHTNESS := 1000
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_NTFS_3G := true
 TW_INCLUDE_RESETPROP := true

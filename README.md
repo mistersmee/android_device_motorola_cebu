@@ -34,7 +34,7 @@ lunch omni_cebu-eng
 mka -jX clobber && mka -jX recoveryimage
 ```
 Note: 'X' in `mka -jX recoveryimage` is the number of cores your processor has.
-For example, a qaud-core processor would have `mka -j4 recoveryimage` as the command.
+For example, a quad-core processor would have `mka -j4 recoveryimage` as the command.
 
 ### Copyright
  ```

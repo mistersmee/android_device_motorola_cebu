@@ -44,6 +44,8 @@ insmod $module_path/qpnp_adaptive_charge.ko
 insmod $module_path/focaltech_0flash_mmi.ko
 insmod $module_path/nova_0flash_mmi.ko
 insmod $module_path/chipone_tddi_mmi.ko
+insmod $module_path/leds_aw99703.ko
+insmod $module_path/ktd3136_bl.ko
 
 cd $firmware_path
 touch_product_string=$(ls $touch_class_path)

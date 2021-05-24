@@ -220,6 +220,5 @@ BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
 
-TW_DEVICE_VERSION := $(shell date -u +"%d%m%Y")-mistersmee
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true

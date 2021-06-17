@@ -30,7 +30,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := liber
+PRODUCT_RELEASE_NAME := cebu
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := cebu

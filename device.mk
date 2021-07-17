@@ -35,6 +35,7 @@ AB_OTA_PARTITIONS += \
     product \
     recovery \
     vbmeta \
+    vbmeta_system \
     dtbo
 
 PRODUCT_PACKAGES += \
@@ -97,4 +98,3 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31
-

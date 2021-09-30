@@ -1,7 +1,5 @@
 #!/system/bin/sh
 
-module_path=/vendor/lib/modules
-
 touch_class_path=/sys/class/touchscreen
 touch_path=
 firmware_path=/vendor/firmware
@@ -29,23 +27,6 @@ wait_for_poweron()
 	fi
 	return 0
 }
-
-# Load all needed modules
-insmod $module_path/sensors_class.ko
-insmod $module_path/fpc1020_mmi.ko
-insmod $module_path/utags.ko
-insmod $module_path/exfat.ko
-insmod $module_path/mmi_annotate.ko
-insmod $module_path/mmi_info.ko
-insmod $module_path/mmi_sys_temp.ko
-insmod $module_path/moto_f_usbnet.ko
-insmod $module_path/qpnp-power-on-mmi.ko
-insmod $module_path/qpnp_adaptive_charge.ko
-insmod $module_path/nova_0flash_mmi.ko
-insmod $module_path/chipone_tddi_mmi.ko
-insmod $module_path/leds_aw99703.ko
-insmod $module_path/ktd3136_bl.ko
-
 cd $firmware_path
 touch_product_string=$(ls $touch_class_path)
 firmware_file="focaltech-dsbj-ft8006s_aa-05-0000-cebu.bin"

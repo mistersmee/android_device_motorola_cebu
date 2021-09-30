@@ -29,7 +29,7 @@ import /init.recovery.qcom_decrypt.rc
 
 on boot
     start health-hal-2-1
-    insmod /vendor/lib/modules/focaltech_0flash_mmi.ko
+    insmod /vendor/lib/modules/1.1/focaltech_0flash_mmi.ko
     start load_ts_firmware
 
 on fs

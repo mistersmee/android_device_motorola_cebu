@@ -152,6 +152,7 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libashmemd_client \
     libcap \
     libion \
+    libandroidicu \
     libpcrecpp \
     libprocinfo \
     libxml2

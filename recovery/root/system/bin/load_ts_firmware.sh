@@ -29,13 +29,21 @@ wait_for_poweron()
 }
 cd $firmware_path
 touch_product_string=$(ls $touch_class_path)
-firmware_file="focaltech-dsbj-ft8006s_aa-05-0000-cebu.bin"
-
-touch_path=/sys$(cat $touch_class_path/$touch_product_string/path | awk '{print $1}')
-wait_for_poweron
-echo $firmware_file > $touch_path/doreflash
-echo 1 > $touch_path/forcereflash
-sleep 5
-echo 1 > $touch_path/reset
+if [[ -d /sys/class/touchscreen/ft8006s_aa ]]; then
+       echo "focaltech"
+       firmware_file="focaltech-dsbj-ft8006s_aa-05-0000-cebu.bin"
+       touch_path=/sys$(cat $touch_class_path/$touch_product_string/path | awk '{print $1}')
+       wait_for_poweron
+       echo $firmware_file > $touch_path/doreflash
+       echo 1 > $touch_path/forcereflash
+       sleep 5
+       echo 1 > $touch_path/reset
+elif [[ -d /sys/class/touchscreen/ICNL9911S ]]; then
+        echo "chipone"
+        chipone_fw_path=/vendor/firmware/ICNL9911.bin
+        flash_path=/sys/chipone-tddi/cts_firmware
+        sleep 2
+        echo $chipone_fw_path > $flash_path/update_from_file
+fi
 
 return 0

@@ -66,8 +66,11 @@ BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 \
 			video=vfb:640x400,bpp=32,memsize=3072000 \
 			msm_rtb.filter=0x237\
 			service_locator.enable=1 \
-			loop.maxpart=7 \
+			loop.max_part=7 \
 			swiotlb=2048 \
+			androidboot.hab.csv=13 \
+			androidboot.hab.product=cebu \
+			androidboot.hab.cid=50 \
 			firmware_class.path=/vendor/firmware_mnt/image
 # For the love of all that is holy, please do not include this in your ROM unless you really want TWRP to not work correctly!
 BOARD_KERNEL_CMDLINE += androidboot.fastboot=1
@@ -176,10 +179,6 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 TW_USE_FSCRYPT_POLICY := 1
 TW_PREPARE_DATA_MEDIA_EARLY := true
 
-# Installer
-#USE_RECOVERY_INSTALLER := true
-#RECOVERY_INSTALLER_PATH := device/motorola/cebu/installer
-
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
@@ -203,6 +202,9 @@ TW_INCLUDE_FASTBOOTD := true
 # Debug flags
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
+TARGET_RECOVERY_DEVICE_MODULES += strace
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
 
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -211,6 +213,19 @@ TARGET_COPY_OUT_PRODUCT := product
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Kernel module loading
-TW_LOAD_VENDOR_MODULES := "exfat.ko fpc1020_mmi.ko ktd3136_bl.ko leds_aw99703.ko mmi_annotate.ko mmi_info.ko mmi_sys_temp.ko moto_f_usbnet.ko nova_0flash_mmi.ko qpnp_adaptive_charge.ko qpnp-power-on-mmi.ko sensors_class.ko utags.ko"
+TW_LOAD_VENDOR_MODULES := "exfat.ko \
+													fpc1020_mmi.ko \
+													ktd3136_bl.ko \
+													leds_aw99703.ko \
+													mmi_annotate.ko \
+													mmi_info.ko \
+													mmi_sys_temp.ko \
+													moto_f_usbnet.ko \
+													nova_0flash_mmi.ko \
+													qpnp_adaptive_charge.ko \
+													qpnp-power-on-mmi.ko \
+													sensors_class.ko \
+													utags.ko"
+
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true

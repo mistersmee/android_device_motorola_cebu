@@ -22,7 +22,7 @@ Front Camera | 16 MP, 1.0µm
 ### Kernel Source
 Check here:
 
-https://github.com/mistersmee/kernel_motorola_sm4250/
+https://github.com/mistersmee/android_kernel_motorola_cebu/
 
 
 ### How to compile
@@ -30,7 +30,7 @@ https://github.com/mistersmee/kernel_motorola_sm4250/
 ```sh
 . build/envsetup.sh
 export LC_ALL=C
-lunch omni_cebu-eng
+lunch twrp_cebu-eng
 mka -jX clobber && mka -jX recoveryimage
 ```
 Note: 'X' in `mka -jX recoveryimage` is the number of cores your processor has.
